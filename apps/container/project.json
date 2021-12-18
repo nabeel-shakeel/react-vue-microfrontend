@@ -1,0 +1,73 @@
+{
+  "root": "apps/container",
+  "sourceRoot": "apps/container/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/container",
+        "index": "apps/container/src/index.html",
+        "baseHref": "/",
+        "main": "apps/container/src/main.tsx",
+        "polyfills": "apps/container/src/polyfills.ts",
+        "tsConfig": "apps/container/tsconfig.app.json",
+        "assets": [
+          "apps/container/src/favicon.ico",
+          "apps/container/src/assets"
+        ],
+        "styles": ["apps/container/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/container/src/environments/environment.ts",
+              "with": "apps/container/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "container:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "container:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/container/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/container"],
+      "options": {
+        "jestConfig": "apps/container/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
