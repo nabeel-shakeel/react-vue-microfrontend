@@ -1,7 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "auth": "apps/auth",
+    "auth-e2e": "apps/auth-e2e",
     "container": "apps/container",
-    "container-e2e": "apps/container-e2e"
+    "container-e2e": "apps/container-e2e",
+    "dashboard": "apps/dashboard",
+    "dashboard-e2e": "apps/dashboard-e2e"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "root": "apps/container",
-  "sourceRoot": "apps/container/src",
+  "root": "apps/dashboard",
+  "sourceRoot": "apps/dashboard/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,26 +9,26 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/container",
-        "index": "apps/container/src/index.html",
+        "outputPath": "dist/apps/dashboard",
+        "index": "apps/dashboard/src/index.html",
         "baseHref": "/",
-        "main": "apps/container/src/main.tsx",
-        "polyfills": "apps/container/src/polyfills.ts",
-        "tsConfig": "apps/container/tsconfig.app.json",
+        "main": "apps/dashboard/src/main.tsx",
+        "polyfills": "apps/dashboard/src/polyfills.ts",
+        "tsConfig": "apps/dashboard/tsconfig.app.json",
         "assets": [
-          "apps/container/src/favicon.ico",
-          "apps/container/src/assets"
+          "apps/dashboard/src/favicon.ico",
+          "apps/dashboard/src/assets"
         ],
-        "styles": ["apps/container/src/styles.css"],
+        "styles": ["apps/dashboard/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/container/config/webpack.dev.js"
+        "webpackConfig": "apps/dashboard/config/webpack.dev.js"
       },
       "configurations": {
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/container/src/environments/environment.ts",
-              "with": "apps/container/src/environments/environment.prod.ts"
+              "replace": "apps/dashboard/src/environments/environment.ts",
+              "with": "apps/dashboard/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -43,13 +43,13 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "buildTarget": "container:build",
+        "buildTarget": "dashboard:build",
         "hmr": true,
-        "port": 8081
+        "port": 8083
       },
       "configurations": {
         "production": {
-          "buildTarget": "container:build:production",
+          "buildTarget": "dashboard:build:production",
           "hmr": false
         }
       }
@@ -58,14 +58,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/container/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/dashboard/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/container"],
+      "outputs": ["coverage/apps/dashboard"],
       "options": {
-        "jestConfig": "apps/container/jest.config.js",
+        "jestConfig": "apps/dashboard/jest.config.js",
         "passWithNoTests": true
       }
     }
